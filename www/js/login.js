@@ -13,8 +13,7 @@ $(document).ready(function(){
         console.log(driver);
         //$("#noTelp").html(driver.nmTelp);
         localStorage.setItem('nmTelp',driver.nmTelp);
-        var lanjut =  "<p>Login Berhasil</p>"+
-                      "<a href='alogin.htm'>lanjut</a>";
+        window.location='alogin.html';
       }
     );
 
