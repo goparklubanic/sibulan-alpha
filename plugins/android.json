@@ -1,0 +1,56 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-battery-status": {
+      "PACKAGE_NAME": "id.web.klubaners.sibulan"
+    },
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "id.web.klubaners.sibulan"
+    },
+    "cordova-plugin-media-capture": {
+      "PACKAGE_NAME": "id.web.klubaners.sibulan"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "id.web.klubaners.sibulan"
+    },
+    "cordova-plugin-dialogs": {
+      "PACKAGE_NAME": "id.web.klubaners.sibulan"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "id.web.klubaners.sibulan"
+    },
+    "cordova-plugin-globalization": {
+      "PACKAGE_NAME": "id.web.klubaners.sibulan"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "id.web.klubaners.sibulan"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "id.web.klubaners.sibulan"
+    },
+    "cordova-plugin-vibration": {
+      "PACKAGE_NAME": "id.web.klubaners.sibulan"
+    },
+    "phonegap-plugin-push": {
+      "FCM_VERSION": "11.0.1",
+      "PACKAGE_NAME": "id.web.klubaners.sibulan"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "id.web.klubaners.sibulan"
+    },
+    "cordova-plugin-console": {
+      "PACKAGE_NAME": "id.web.klubaners.sibulan"
+    }
+  },
+  "dependent_plugins": {
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "id.web.klubaners.sibulan"
+    }
+  }
+}

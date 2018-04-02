@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "871714823353",
+    "firebase_url": "https://sibulan-r711zd.firebaseio.com",
+    "project_id": "sibulan-r711zd",
+    "storage_bucket": "sibulan-r711zd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:871714823353:android:bc8aa8c3e528a8b5",
+        "android_client_info": {
+          "package_name": "id.web.klubaners.sibulan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "871714823353-9ek7uca4blh3d447eu4p4tomla312s0d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMUXKNvz2uoq3xt61twWZ8h4MG5DcW9Co"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:871714823353:android:8c4fd37dbaea305c",
+        "android_client_info": {
+          "package_name": "org.sibulan.drv"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "871714823353-9ek7uca4blh3d447eu4p4tomla312s0d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMUXKNvz2uoq3xt61twWZ8h4MG5DcW9Co"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

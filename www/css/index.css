@@ -1,0 +1,9 @@
+.putes {
+  display: block; width: 300px; padding: 15px; border: 1px solid black;
+}
+.putes label{
+  display: block; width: 100%; background: #000; color: #FFF; padding: 15px 0px;
+}
+
+.putes textarea#regId { font-family: monospace; font-size: 12px; width: 100%; height: 200px;
+display: block;}
