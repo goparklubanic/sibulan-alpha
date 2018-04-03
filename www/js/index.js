@@ -69,6 +69,7 @@ var app = {
           nmTelp: nmTelp, regid: data.registrationId
         },function(response){
           $("#app-status").html('Registered');
+          $("#pesan").html(response);
         }
       );
       // document.getElementById('platform').innerHTML = device.platform;
