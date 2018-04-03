@@ -13,7 +13,7 @@ $(document).ready(function(){
         console.log(driver);
         //$("#noTelp").html(driver.nmTelp);
         localStorage.setItem('nmTelp',driver.nmTelp);
-        window.location='alogin.html';
+        window.location='index.html';
       }
     );
 

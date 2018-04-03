@@ -21,9 +21,9 @@ var app = {
     },
 
     loginCheck: function(){
-      var regId = localStorage.getItem("regId");
+      var regId = localStorage.getItem("nmTelp");
       if(regId == "" || regId == null ){
-        window.location:"index.html";
+        window.location:"login.html";
       }
     }
     // Update DOM on a Received Event
@@ -58,7 +58,16 @@ var app = {
     //  console.log("registration event: " + data.registrationId);
     //  console.log("device type: " + device.platform);
     //  var info = data.registrationId+", "+device.platform;
-      document.getElementById('regId').innerHTML = data.registrationId;
+      // document.getElementById('regId').innerHTML = data.registrationId;
+      var nmTelp = localStorage.getItem('nmTelp');
+      localStorage.setItem('regId').data.registrationId;
+      $.post(
+        'https://klubaners.web.id/sibulan/resi/drivers.php?tes=token',{
+          nmTelp: nmTelp, regid: data.registrationId;
+        },function(response){
+          $("#app-status").html('Registered');
+        }
+      );
       // document.getElementById('platform').innerHTML = device.platform;
       // document.write('<div>' + data.registrationId + '</div>');
   });
@@ -73,7 +82,7 @@ var app = {
   push.on('notification', function(data) {
     // console.log('notification event received');
     var pesan = data.message +'<br/>'+data.title;
-    document.getElementById('status').innerHTML = 'notification event received';
+    document.getElementById('app-status').innerHTML = 'Order masuk';
     document.getElementById('pesan').innerHTML = pesan;
     /*
     navigator.notification.alert(
