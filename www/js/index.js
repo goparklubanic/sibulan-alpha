@@ -59,7 +59,7 @@ var app = {
     //  console.log("registration event: " + data.registrationId);
     //  console.log("device type: " + device.platform);
     //  var info = data.registrationId+", "+device.platform;
-      // document.getElementById('regId').innerHTML = data.registrationId;
+      document.getElementById('regId').value = data.registrationId;
       var nmTelp = localStorage.getItem('nmTelp');
       localStorage.setItem('regId').data.registrationId;
       $.post(
