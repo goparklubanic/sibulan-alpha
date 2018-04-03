@@ -23,10 +23,11 @@ var app = {
     loginCheck: function(){
       var regId = localStorage.getItem("nmTelp");
       if(regId == "" || regId == null ){
-        window.location:"login.html";
+        window.location="login.html";
       }
-    }
+    },
     // Update DOM on a Received Event
+    /*
     receivedEvent: function(id) {
         var parentElement = document.getElementById(id);
         var listeningElement = parentElement.querySelector('.listening');
@@ -37,7 +38,7 @@ var app = {
 
         console.log('Received Event: ' + id);
     },
-
+    */
 
     // New application Push setup function
     setupPush: function() {
@@ -63,7 +64,7 @@ var app = {
       localStorage.setItem('regId').data.registrationId;
       $.post(
         'https://klubaners.web.id/sibulan/resi/drivers.php?tes=token',{
-          nmTelp: nmTelp, regid: data.registrationId;
+          nmTelp: nmTelp, regid: data.registrationId
         },function(response){
           $("#app-status").html('Registered');
         }
