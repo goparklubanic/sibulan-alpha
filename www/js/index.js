@@ -63,13 +63,13 @@ var app = {
     //  var info = data.registrationId+", "+device.platform;
       document.getElementById('regId').value = data.registrationId;
       var nmTelp = localStorage.getItem('nmTelp');
-      localStorage.setItem('regId').data.registrationId;
+      localStorage.setItem('regId',data.registrationId);
       $.post(
         'https://klubaners.web.id/sibulan/resi/drivers.php?tes=token',{
           nmTelp: nmTelp, regid: data.registrationId
         },function(response){
           $("#app-status").html('Registered');
-          $("#pesan").html(response);
+          $("#app-pesan").html(response);
         }
       );
       // document.getElementById('platform').innerHTML = device.platform;
