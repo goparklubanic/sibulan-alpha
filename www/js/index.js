@@ -21,9 +21,11 @@ var app = {
     },
 
     loginCheck: function(){
-      var regId = localStorage.getItem("nmTelp");
-      if(regId == "" || regId == null ){
+      var nmTelp = localStorage.getItem("nmTelp");
+      if(nmTelp == "" || nmTelp == null ){
         window.location="login.html";
+      }else{
+        document.getElementById('nmTelp').innerHTML = nmTelp;
       }
     },
     // Update DOM on a Received Event
