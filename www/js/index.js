@@ -16,9 +16,16 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
     //    app.receivedEvent('deviceready');
+        app.loginCheck();
         app.setupPush();
     },
 
+    loginCheck: function(){
+      var regId = localStorage.getItem("regId");
+      if(regId == "" || regId == null ){
+        window.location:"index.html";
+      }
+    }
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         var parentElement = document.getElementById(id);

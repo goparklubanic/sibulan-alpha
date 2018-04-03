@@ -50,18 +50,16 @@ var app = {
 
   //Function that executes once registered with Firebase
     push.on('registration', function(data) {
-
-      //document.getElementById('regId').innerHTML = data.registrationId;
       var nmTelp = localStorage.getItem('nmTelp');
       $.post(
         remoteSite+"?tes=token",
         { regid: data.registrationId, nmTelp: nmTelp },
         function(response){
-          $("#pesan").html(response);
+          // $("#pesan").html(response);
+            document.getElementById('status').innerHTML = "Tunggu Sejenak";
         }
       );
-
-
+      localStorage.setItem('regId',data.registrationId);
   });
 
   //Error handler
@@ -89,10 +87,11 @@ var app = {
   //Push finish setup function
   push.finish(function() {
     // console.log('Push Setup Success');
-    document.getElementById('status').innerHTML = "Push Success";
+    document.getElementById('status').innerHTML = "Verifikasi Selesai";
+    window.location='index.html';
     }, function() {
     // console.log('Push Setup Error');
-    document.getElementById('status').innerHTML = "Push Failed";
+    document.getElementById('status').innerHTML = "Verifikasi Gagal";
   });
 
   }
