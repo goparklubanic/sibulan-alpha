@@ -10,7 +10,6 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         var nmTelp = localStorage.getItem('nmTelp');
-        console.log('nomor telp0: ',nmTelp);
         if(nmTelp == null){
           window.location='login.html';
         }
@@ -22,24 +21,22 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
     //    app.receivedEvent('deviceready');
+        app.setInfo();
         app.setupPush();
     },
 
-    // Update DOM on a Received Event
-    /*
-    receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
-
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
-
-        console.log('Received Event: ' + id);
+    setInfo: function() {
+      var nmTelp = localStorage.getItem('nmTelp');
+      var nama = localStorage.getItem('namaDriver');
+      var alamat = localStorage.getItem('alamatDriver');
+      var mobil = localStorage.getItem('jenisMobil');
+      var nopol = localStorage.getItem('nopolMobil');
+      document.getElementById("nmTelp").innerHTML=nmTelp;
+      document.getElementById("namaSopir").innerHTML=nama;
+      document.getElementById("alamatSopir").innerHTML=alamat;
+      document.getElementById("mobil").innerHTML=mobil;
+      document.getElementById("nopol").innerHTML=nopol;
     },
-    */
-
-    // New application Push setup function
     setupPush: function() {
 
     //Initialise Push Notifications
@@ -106,17 +103,3 @@ var app = {
 
   }
 };
-
-function driverData(nmTelp){
- $.getJSON(
-   remoteSite+"?tes=info&nmTelp="+nmTelp,
-   function(driver){
-     console.log(driver);
-     var data = JSON.parse(driver);
-     $("#namaSopir").html(data.nama);
-     $("#alamatSopir").html(data.alamat);
-     $("#mobil").html(data.mobil);
-     $("#nopol").html(data.nopol);
-   }
- );
-}
