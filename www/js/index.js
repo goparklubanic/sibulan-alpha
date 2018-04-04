@@ -33,7 +33,7 @@ var app = {
 
     driverData: function(nmTelp){
       $.getJSON(
-        remoteSite+"?tes=driver&nmTelp="+nmTelp,
+        remoteSite+"?tes=info&nmTelp="+nmTelp,
         function(driver){
           var data = JSON.parse(driver);
           $("#namaSopir").html(data.nama);
