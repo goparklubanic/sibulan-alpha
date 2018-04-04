@@ -1,0 +1,9 @@
+.app-header{
+  height: 60px; background: #000; color: #FFF;
+  padding: 10px;
+}
+
+.app-footer{
+  height: 60px; background: #000; color: #FFF;
+  padding: 10px;
+}

@@ -1,0 +1,11 @@
+{
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "Sibulan Driver",
+  "short_name": "Sibulan Driver",
+  "version": "id.web.klubaners.sibulan",
+  "description": "Sibulan Driver",
+  "author": "Tim Sibulan",
+  "icons": [],
+  "start_url": "index.html"
+}
