@@ -61,7 +61,7 @@ var app = {
     //  console.log("registration event: " + data.registrationId);
     //  console.log("device type: " + device.platform);
     //  var info = data.registrationId+", "+device.platform;
-      document.getElementById('regId').value = data.registrationId;
+    //  document.getElementById('regId').value = data.registrationId;
       var nmTelp = localStorage.getItem('nmTelp');
       localStorage.setItem('regId',data.registrationId);
       $.post(
@@ -87,7 +87,7 @@ var app = {
     // console.log('notification event received');
     var pesan = data.message +'<br/>'+data.title;
     document.getElementById('app-status').innerHTML = 'Order masuk';
-    document.getElementById('pesan').innerHTML = pesan;
+    document.getElementById('app-pesan').innerHTML = pesan;
     /*
     navigator.notification.alert(
     data.message, // message
