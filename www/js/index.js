@@ -1,3 +1,4 @@
+var remoteSite = "https://klubaners.web.id/sibulan/resi/drivers.php";
 var app = {
     // Application Constructor
     initialize: function() {
@@ -26,7 +27,21 @@ var app = {
         window.location="login.html";
       }else{
         document.getElementById('nmTelp').innerHTML = nmTelp;
+        app.driverData(nmTelp);
       }
+    },
+
+    driverData: function(nmTelp){
+      $.getJSON(
+        remoteSite+"?tes=driver&nmTelp="+nmTelp,
+        function(driver){
+          var data = JSON.parse(driver);
+          $("#namaSopir").html(data.nama);
+          $("#alamatSopir").html(data.alamat);
+          $("#mobil").html(data.mobil);
+          $("#nopol").html(data.nopol);
+        }
+      );
     },
     // Update DOM on a Received Event
     /*
@@ -65,11 +80,11 @@ var app = {
       var nmTelp = localStorage.getItem('nmTelp');
       localStorage.setItem('regId',data.registrationId);
       $.post(
-        'https://klubaners.web.id/sibulan/resi/drivers.php?tes=token',{
+        remoteSite+'?tes=token',{
           nmTelp: nmTelp, regid: data.registrationId
         },function(response){
           $("#app-status").html('Registered');
-          $("#app-pesan").html(response);
+          // $("#app-pesan").html(response);
         }
       );
       // document.getElementById('platform').innerHTML = device.platform;
