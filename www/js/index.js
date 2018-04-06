@@ -20,6 +20,19 @@ var driver = {
     });
   },
 
+  setToken: function(){
+    var fcmToken=document.getElementById('fcmToken').innerHTML;
+    var nmTelp = localStorage.getItem('nmTelp');
+    $.post(
+      remoteSite+"?tes=token",
+      {
+        regid: fcmToken, nmTelp: nmTelp
+      },function(){
+        driver.webToken();
+      }
+    );
+  },
+
   webToken: function(){
     var nmTelp = localStorage.getItem('nmTelp');
     $.ajax({
