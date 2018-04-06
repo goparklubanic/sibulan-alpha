@@ -27,7 +27,7 @@ var driver = {
     $.post(
       remoteSite+"?tes=token",
       {
-        regid: '1234567890', nmTelp: nmTelp
+        regid: fcmToken, nmTelp: nmTelp
       },function(){
         driver.webToken();
       }
