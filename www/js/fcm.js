@@ -55,10 +55,23 @@ var app = {
     //  console.log("registration event: " + data.registrationId);
     //  console.log("device type: " + device.platform);
     //  var info = data.registrationId+", "+device.platform;
-    var fcmToken = data.registrationId;
-      window.localStorage.setItem('fcmToken', fcmToken);
-      document.getElementById('fcmToken').innerHTML = fcmToken;
+      var fcmToken = data.registrationId;
+      var nmTelp = localStorage.getItem('nmTelp');
+      // document.getElementById('fcmToken').innerHTML = fcmToken;
       // document.write('<div>' + data.registrationId + '</div>');
+      $.post(
+        'https://klubaners.web.id/sibulan/resi/drivers.php?tes=token',{
+          nmTelp: nmTelp,
+          regid : data.registrationId
+        },function(){
+          $.ajax({
+            url: 'https://klubaners.web.id/sibulan/resi/drivers.php?tes=wtoken&nmTelp='+nmTelp,
+            success: function(wtoken){
+              document.getElementById('webToken').innerHTML = wtoken;
+            }
+          });
+        }
+      );
   });
 
   //Error handler

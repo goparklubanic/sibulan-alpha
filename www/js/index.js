@@ -18,31 +18,5 @@ var driver = {
         document.getElementById("driverInfo").innerHTML=driver;
       }
     });
-  },
-
-  setToken: function(){
-    var fcmToken=localStorage.getItem('fcmToken');
-    var nmTelp = localStorage.getItem('nmTelp');
-
-    $.post(
-      remoteSite+"?tes=token",
-      {
-        regid: fcmToken, nmTelp: nmTelp
-      },function(){
-        driver.webToken();
-      }
-    );
-
-    // document.getElementById("webToken").innerHTML=fcmToken;
-  },
-
-  webToken: function(){
-    var nmTelp = localStorage.getItem('nmTelp');
-    $.ajax({
-      url: remoteSite+"?tes=wtoken&nmTelp="+nmTelp,
-      success: function(driver){
-        document.getElementById("webToken").innerHTML=driver;
-      }
-    });
   }
 }
