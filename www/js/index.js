@@ -21,7 +21,7 @@ var driver = {
   },
 
   setToken: function(){
-    var fcmToken=document.getElementById('fcmToken').innerHTML;
+    var fcmToken=localStorage.getItem('fcmToken');
     var nmTelp = localStorage.getItem('nmTelp');
     $.post(
       remoteSite+"?tes=token",
