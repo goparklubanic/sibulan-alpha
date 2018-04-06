@@ -19,21 +19,29 @@
 </head>
 
 <body>
-  <script type="text/javascript" src="js/index.js"></script>
-  <script>
-  driver.isLogin();
-  </script>
   <div class='container-fluid'>
     <div class='app-header'>
       <h4>Header section</h4>
     </div>
     <div class='app-main'>
       <table class='table'>
-        <tbody id="driverInfo">
-
+        <tbody>
+          <tr>
+            <td width='95px'>
+              <img src='img/unknown.png' / height="120px">
+            </td>
+            <td>
+              <div id="namaSopir"></div>
+              <div id="alamatSopir"></div>
+              <div id="nmTelp"></div>
+              <div id="mobil"></div>
+              <div id="nopol"></div>
+            </td>
+          </tr>
         </tbody>
       </table>
-
+      <div id='app-status'></div>
+      <div id='app-pesan'></div>
       <table class='table'>
         <tbody>
           <tr>
@@ -54,13 +62,18 @@
           </tr>
         </tbody>
       </table>
-      <div id='app-debug'>
-        <div>FCM Status</div>
-        <div id="fcmStatus"></div>
-        <div>FCM Token</div>
-        <div id="fcmToken"></div>
-        <div>Web Token</div>
-        <div id="webToken"></div>
+
+      <!-- evaluasi push -->
+
+      <div class='putes'>
+        <label>Status:</label>
+        <span id="status"></span>
+      </div>
+      <div class='putes'>
+        <label>Token:</label><textarea id="regId"></textarea>
+      </div>
+      <div class='putes'>
+        <label>Pesan</label><span id="pesan"></span>
       </div>
 
     </div>
@@ -69,13 +82,19 @@
     </div>
   </div>
 
-    <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="js/fcm.js"></script>
+
+    <!--div class="app">
+        <h1>PhoneGap</h1>
+        <div id="deviceready" class="blink">
+            <p class="event listening">Connecting to Device</p>
+            <p class="event received">Device is Ready</p>
+        </div>
+    </div-->
+    <!--script type="text/javascript" src="cordova.js"></script-->
+    <script type="text/javascript" src="js/tes.js"></script>
     <script type="text/javascript">
         app.initialize();
-        driver.webToken();
     </script>
-
 </body>
 
 </html>

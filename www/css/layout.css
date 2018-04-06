@@ -7,3 +7,9 @@
   height: 60px; background: #000; color: #FFF;
   padding: 10px;
 }
+
+.app-main {padding: 20px 0px;}
+.loginBox{
+  width: 270px;
+  padding: 10px; margin: auto;
+}

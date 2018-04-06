@@ -1,5 +1,6 @@
 var remoteSite = 'https://klubaners.web.id/sibulan/resi/drivers.php';
 $(document).ready(function(){
+
   $("#submit").click( function(){
 
     var nmTelp = $("#nmTelp").val();
@@ -21,6 +22,8 @@ $(document).ready(function(){
   });
 
 });
+
+
 
 function driverInfo(telp){
   $.getJSON(remoteSite+"?tes=info&nmTelp="+telp, function(driver){

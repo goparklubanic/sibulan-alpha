@@ -1,105 +1,32 @@
-//
-var app = {
-    // Application Constructor
-    initialize: function() {
-        this.bindEvents();
-    },
-    // Bind Event Listeners
-    //
-    // Bind any events that are required on startup. Common events are:
-    // 'load', 'deviceready', 'offline', and 'online'.
-    bindEvents: function() {
-        var nmTelp = localStorage.getItem('nmTelp');
-        if(nmTelp == null){
-          window.location='login.html';
-        }
-        document.addEventListener('deviceready', this.onDeviceReady, false);
-    },
-    // deviceready Event Handler
-    //
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-    // function, we must explicitly call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
-    //    app.receivedEvent('deviceready');
-        app.setInfo();
-        app.setupPush();
-    },
+var remoteSite="https://klubaners.web.id/sibulan/resi/drivers.php";
+//var nmTelp = localStorage.getItem('nmTelp');
+var driver = {
+  isLogin: function(){
+    var nmTelp = localStorage.getItem('nmTelp');
+    if( nmTelp == null ){
+      window.location = 'login.html';
+    }else{
+      driver.info();
+    }
+  },
 
-    setInfo: function() {
-      var nmTelp = localStorage.getItem('nmTelp');
-      var nama = localStorage.getItem('namaDriver');
-      var alamat = localStorage.getItem('alamatDriver');
-      var mobil = localStorage.getItem('jenisMobil');
-      var nopol = localStorage.getItem('nopolMobil');
-      document.getElementById("nmTelp").innerHTML=nmTelp;
-      document.getElementById("namaSopir").innerHTML=nama;
-      document.getElementById("alamatSopir").innerHTML=alamat;
-      document.getElementById("mobil").innerHTML=mobil;
-      document.getElementById("nopol").innerHTML=nopol;
-    },
-    setupPush: function() {
-
-    //Initialise Push Notifications
-    var push = PushNotification.init({
-      "android": {},
-      "ios": {
-      "sound": true,
-      "alert": true,
-      "badge": true
-      },
-      "windows": {}
+  info: function(){
+    var nmTelp = localStorage.getItem('nmTelp');
+    $.ajax({
+      url: remoteSite+"?tes=info&nmTelp="+nmTelp,
+      success: function(driver){
+        document.getElementById("driverInfo").innerHTML=driver;
+      }
     });
+  },
 
-  //Function that executes once registered with Firebase
-    push.on('registration', function(data) {
-    //  console.log("registration event: " + data.registrationId);
-    //  console.log("device type: " + device.platform);
-    //  var info = data.registrationId+", "+device.platform;
-    //  document.getElementById('regId').value = data.registrationId;
-      var nmTelp = localStorage.getItem('nmTelp');
-      localStorage.setItem('regId',data.registrationId);
-      $.post(
-        remoteSite+'?tes=token',{
-          nmTelp: nmTelp, regid: data.registrationId
-        },function(response){
-          $("#app-status").html('Registered');
-          // $("#app-pesan").html(response);
-        }
-      );
-      // document.getElementById('platform').innerHTML = device.platform;
-      // document.write('<div>' + data.registrationId + '</div>');
-  });
-
-  //Error handler
-  push.on('error', function(e) {
-  //  console.log("push error: " + e.message);
-    document.getElementById('status').innerHTML = "error: "+e.message;
-  });
-
-  //Function that executes when a notification is received
-  push.on('notification', function(data) {
-    // console.log('notification event received');
-    var pesan = data.message +'<br/>'+data.title;
-    document.getElementById('app-status').innerHTML = 'Order masuk';
-    document.getElementById('app-pesan').innerHTML = pesan;
-    /*
-    navigator.notification.alert(
-    data.message, // message
-    null, // callback
-    data.title, // title
-    'Ok' // buttonName
-    );
-    */
-  });
-
-  //Push finish setup function
-  push.finish(function() {
-    // console.log('Push Setup Success');
-    document.getElementById('status').innerHTML = "Push Success";
-    }, function() {
-    // console.log('Push Setup Error');
-    document.getElementById('status').innerHTML = "Push Failed";
-  });
-
+  webToken: function(){
+    var nmTelp = localStorage.getItem('nmTelp');
+    $.ajax({
+      url: remoteSite+"?tes=wtoken&nmTelp="+nmTelp,
+      success: function(driver){
+        document.getElementById("webToken").innerHTML=driver;
+      }
+    });
   }
-};
+}
