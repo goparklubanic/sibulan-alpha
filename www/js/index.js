@@ -23,17 +23,17 @@ var driver = {
   setToken: function(){
     var fcmToken=localStorage.getItem('fcmToken');
     var nmTelp = localStorage.getItem('nmTelp');
-    /*
+
     $.post(
       remoteSite+"?tes=token",
       {
-        regid: fcmToken, nmTelp: nmTelp
+        regid: '1234567890', nmTelp: nmTelp
       },function(){
         driver.webToken();
       }
     );
-    */
-    document.getElementById("webToken").innerHTML=fcmToken;
+
+    // document.getElementById("webToken").innerHTML=fcmToken;
   },
 
   webToken: function(){
