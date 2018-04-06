@@ -23,6 +23,7 @@ var driver = {
   setToken: function(){
     var fcmToken=localStorage.getItem('fcmToken');
     var nmTelp = localStorage.getItem('nmTelp');
+    /*
     $.post(
       remoteSite+"?tes=token",
       {
@@ -31,6 +32,8 @@ var driver = {
         driver.webToken();
       }
     );
+    */
+    document.getElementById("webToken").innerHTML=fcmToken;
   },
 
   webToken: function(){
