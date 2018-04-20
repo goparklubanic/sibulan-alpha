@@ -18,5 +18,9 @@ var driver = {
         document.getElementById("driverInfo").innerHTML=driver;
       }
     });
+  },
+
+  setToken: function(){
+    console.log('token not set yet');
   }
 }

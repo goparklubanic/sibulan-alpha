@@ -37,20 +37,20 @@
       <table class='table'>
         <tbody>
           <tr>
-            <td width='125px'>Nama Pasien</td>
-            <td>xxx</td>
+            <td width='125px'>Nama Pemohon</td>
+            <td id="pemohon"></td>
           </tr>
           <tr>
             <td>Alamat Asal</td>
-            <td>xxx</td>
+            <td id="alamat"></td>
           </tr>
           <tr>
             <td>Tujuan</td>
-            <td>xxx</td>
+            <td id="tujuan"></td>
           </tr>
           <tr>
             <td>Kontak Keluarga</td>
-            <td>xxx</td>
+            <td id="telp"></td>
           </tr>
         </tbody>
       </table>
@@ -74,6 +74,30 @@
     <script type="text/javascript">
         app.initialize();
         driver.setToken();
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyB5YOCG12t_MviYgerqW4xr8YJAiUEOQwA",
+        authDomain: "sibulan-r711zd.firebaseapp.com",
+        databaseURL: "https://sibulan-r711zd.firebaseio.com",
+        projectId: "sibulan-r711zd",
+        storageBucket: "sibulan-r711zd.appspot.com",
+        messagingSenderId: "871714823353"
+      };
+      firebase.initializeApp(config);
+      var ablRef = firebase.database().ref();
+
+      ablRef.on('value',function(permintaan){
+        console.log(permintaan.val().ablreq);
+        var data = permintaan.val().ablreq;
+        document.getElementById('pemohon').innerHTML=data.nama;
+        document.getElementById('alamat').innerHTML=data.pprt+"/"+data.pprw+" "+data.ppds+" "+data.ppkc+" "+data.ppkt;
+        document.getElementById('tujuan').innerHTML=data.tujuan;
+        document.getElementById('telp').innerHTML=data.nmTelp;
+      });
+
     </script>
 
 </body>

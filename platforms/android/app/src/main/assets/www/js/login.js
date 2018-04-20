@@ -1,6 +1,6 @@
+var remoteSite = 'https://klubaners.web.id/sibulan/resi/drivers.php';
 $(document).ready(function(){
 
-  var remoteSite = 'https://klubaners.web.id/sibulan/resi/drivers.php';
   $("#submit").click( function(){
 
     var nmTelp = $("#nmTelp").val();
@@ -13,10 +13,29 @@ $(document).ready(function(){
         console.log(driver);
         //$("#noTelp").html(driver.nmTelp);
         localStorage.setItem('nmTelp',driver.nmTelp);
-        window.location='index.html';
+        console.log('nomor telp:',driver.nmTelp);
+        driverInfo(driver.nmTelp);
+        // window.location='index.html';
       }
     );
 
   });
 
 });
+
+
+
+function driverInfo(telp){
+  $.getJSON(remoteSite+"?tes=info&nmTelp="+telp, function(driver){
+      var nama = driver.nama;
+      localStorage.setItem('namaDriver',nama);
+      var alamat = driver.alamat;
+      localStorage.setItem('alamatDriver',alamat);
+      var mobil = driver.mobil;
+      localStorage.setItem('jenisMobil',mobil);
+      var nopol = driver.nopol;
+      localStorage.setItem('nopolMobil',nopol);
+  });
+
+    window.location='index.html';
+}

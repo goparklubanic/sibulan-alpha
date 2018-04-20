@@ -1,5 +1,5 @@
 .putes {
-  display: block; width: 300px; padding: 15px; border: 1px solid black;
+  display: none; width: 300px; padding: 15px; border: 1px solid black;
   margin: 5px auto;
 }
 .putes label{
