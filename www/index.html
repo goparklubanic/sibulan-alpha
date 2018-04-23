@@ -41,7 +41,7 @@
             <td id="pemohon"></td>
           </tr>
           <tr>
-            <td>Alamat Asal</td>
+            <td>Titik Jemput</td>
             <td id="alamat"></td>
           </tr>
           <tr>
@@ -49,11 +49,18 @@
             <td id="tujuan"></td>
           </tr>
           <tr>
+            <td>Koordinat</td>
+            <td id="koordinat"></td>
+          </tr>
+          <tr>
             <td>Kontak Keluarga</td>
             <td id="telp"></td>
           </tr>
         </tbody>
       </table>
+      <div>
+        <button class='form-control' id="responRequest">Respon</button>
+      </div>
       <div id='app-debug'>
         <div>FCM Status</div>
         <div id="fcmStatus"></div>
@@ -88,14 +95,47 @@
       };
       firebase.initializeApp(config);
       var ablRef = firebase.database().ref();
+      var ablReq = firebase.database().ref('ablreq');
 
       ablRef.on('value',function(permintaan){
         console.log(permintaan.val().ablreq);
         var data = permintaan.val().ablreq;
-        document.getElementById('pemohon').innerHTML=data.nama;
-        document.getElementById('alamat').innerHTML=data.pprt+"/"+data.pprw+" "+data.ppds+" "+data.ppkc+" "+data.ppkt;
-        document.getElementById('tujuan').innerHTML=data.tujuan;
-        document.getElementById('telp').innerHTML=data.nmTelp;
+        if(data.status == 'unresponded'){
+          document.getElementById('pemohon').innerHTML=data.nama;
+          document.getElementById('alamat').innerHTML=data.pprt+"/"+data.pprw+" "+data.ppds+" "+data.ppkc+" "+data.ppkt;
+          document.getElementById('tujuan').innerHTML=data.tujuan;
+          document.getElementById('telp').innerHTML=data.nmTelp;
+          document.getElementById('koordinat').innerHTML=data.geol;
+          $("#responRequest").css('display','block');
+          localStorage.setItem( 'kontak' , data.nmTelp );
+        }
+      });
+
+      $("#responRequest").click( function(){
+        
+        localStorage.setItem('jobPemohon',document.getElementById('pemohon').innerHTML);
+        localStorage.setItem('jobAlamat',document.getElementById('alamat').innerHTML);
+        localStorage.setItem('jobTujuan',document.getElementById('tujuan').innerHTML);
+        localStorage.setItem('jobTelp',document.getElementById('telp').innerHTML);
+        localStorage.setItem('jobKoordinat',document.getElementById('koordinat').innerHTML);
+
+        ablReq.update({'status' : 'responded'});
+
+        var klien   = localStorage.getItem('kontak');
+        var nama    = localStorage.getItem('namaDriver');
+        var mobil   = localStorage.getItem('jenisMobil');
+        var nopol   = localStorage.getItem('nopolMobil');
+        var nmTelp  = localStorage.getItem('nmTelp');
+
+
+        var ablRsp = firebase.database().ref(klien);
+        ablRsp.update({
+           'nopol':nopol,
+           'nmTelp':nmTelp,
+           'driver':nama,
+           'mobil':mobil
+        });
+        window.location='respon.html';
       });
 
     </script>
