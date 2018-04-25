@@ -6,28 +6,48 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="msapplication-tap-highlight" content="no" />
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
-    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' gap:; style-src 'self' 'unsafe-inline'; media-src *" />
-    <meta charset="utf-8" />
+    <meta http-equiv="Content-Security-Policy"
+    content="default-src *;
+    style-src * 'unsafe-inline';
+    script-src * 'unsafe-inline' 'unsafe-eval'
+          http://*.google.com
+                           http://*.gstatic.com
+                           http://*.googleapis.com
+                           http://*.firebaseio.com
+                           https://*.google.com
+                           https://*.gstatic.com
+                           https://*.googleapis.com
+                           https://*.firebaseio.com;                               ;
+    img-src * data: 'unsafe-inline';
+    connect-src * 'unsafe-inline';
+    frame-src *;" />
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/layout.js"></script>
-    <!--link rel="stylesheet" type="text/css" href="css/google-fonts.css"-->
+    <link rel="stylesheet" type="text/css" href="css/google-fonts.css">
+    <link rel="stylesheet" type="text/css" href="css/theme.css">
     <link rel="stylesheet" type="text/css" href="css/index.css">
-    <link rel="stylesheet" type="text/css" href="css/layout.css">
     <title>siBulan Crew</title>
 </head>
 
-<body>
+<body class='sibulan'>
   <script type="text/javascript" src="js/index.js"></script>
   <script>
   driver.isLogin();
   </script>
-  <div class='container-fluid'>
-    <div class='app-header'>
-      <h4>Header section</h4>
+  <div class='app-header'>
+    <div id='header-logo'>
+      <img src='img/icon-ori.png' />
     </div>
-    <div class='app-main'>
+    <div id='header-text'>
+      <p>
+     <span id='title-1'>Layanan Ambulans Gratis</span>
+    </p>
+    </div>
+  </div>
+  <div class='container-fluid'>
+    <div class='app-mainbox'>
       <table class='table'>
         <tbody id="driverInfo">
 
@@ -36,6 +56,10 @@
 
       <table class='table'>
         <tbody>
+          <tr>
+            <td width='125px'>Ambulans</td>
+            <td id="ambTipe"></td>
+          </tr>
           <tr>
             <td width='125px'>Nama Pemohon</td>
             <td id="pemohon"></td>
@@ -48,20 +72,13 @@
             <td>Tujuan</td>
             <td id="tujuan"></td>
           </tr>
-          <tr>
-            <td>Koordinat</td>
-            <td id="koordinat"></td>
-          </tr>
-          <tr>
-            <td>Kontak Keluarga</td>
-            <td id="telp"></td>
-          </tr>
+
         </tbody>
       </table>
       <div>
         <button class='form-control' id="responRequest">Respon</button>
       </div>
-      <div id='app-debug'>
+      <div id='app-debug' style='display:none;'>
         <div>FCM Status</div>
         <div id="fcmStatus"></div>
         <div>FCM Token</div>
@@ -71,10 +88,10 @@
       </div>
 
     </div>
-    <div class='app-footer'>
-      <h4>footer section</h4>
-    </div>
   </div>
+  <div class='app-footer'>
+    &copy;SiBulan 2018
+  </div> <!-- app-footer -->
 
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/fcm.js"></script>
@@ -101,23 +118,23 @@
         console.log(permintaan.val().ablreq);
         var data = permintaan.val().ablreq;
         if(data.status == 'unresponded'){
-          document.getElementById('pemohon').innerHTML=data.nama;
-          document.getElementById('alamat').innerHTML=data.pprt+"/"+data.pprw+" "+data.ppds+" "+data.ppkc+" "+data.ppkt;
+          document.getElementById('ambTipe').innerHTML=data.tipe;
+          document.getElementById('pemohon').innerHTML=data.nama+"<br />"+data.nmTelp;
+          document.getElementById('alamat').innerHTML=data.pprt+"/"+data.pprw+" "+data.ppds+" "+data.ppkc+" "+data.ppkt+"<br />"+data.geol;
           document.getElementById('tujuan').innerHTML=data.tujuan;
-          document.getElementById('telp').innerHTML=data.nmTelp;
-          document.getElementById('koordinat').innerHTML=data.geol;
           $("#responRequest").css('display','block');
           localStorage.setItem( 'kontak' , data.nmTelp );
+        }else{
+          $("#responRequest").hide();
         }
       });
 
+
       $("#responRequest").click( function(){
-        
+
         localStorage.setItem('jobPemohon',document.getElementById('pemohon').innerHTML);
         localStorage.setItem('jobAlamat',document.getElementById('alamat').innerHTML);
         localStorage.setItem('jobTujuan',document.getElementById('tujuan').innerHTML);
-        localStorage.setItem('jobTelp',document.getElementById('telp').innerHTML);
-        localStorage.setItem('jobKoordinat',document.getElementById('koordinat').innerHTML);
 
         ablReq.update({'status' : 'responded'});
 

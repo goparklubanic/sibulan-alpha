@@ -1,12 +1,7 @@
-.putes {
-  display: none; width: 300px; padding: 15px; border: 1px solid black;
-  margin: 5px auto;
+.info-block p {margin: 0; padding: 1px;}
+.info-label {display: inline-block; width: 80px; color: #800000;}
+.order-btn{
+	display: inline;  width: 48%; margin: 10px auto;
+	padding: 10px 10px; background: #D2161E; color: #F0F0F0;
+	font-size: 14pt; border: 1px solid #0F0F0F; border-radius: 5px;
 }
-.putes label{
-  display: block; width: 100%; background: #000; color: #FFF; padding: 15px 0px;
-}
-
-.putes textarea#regId { font-family: monospace; font-size: 12px; width: 100%; height: 200px;
-display: block;}
-
-#responRequest, #app-debug{display:none;}
