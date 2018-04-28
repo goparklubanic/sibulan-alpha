@@ -57,7 +57,7 @@ var app = {
     //  var info = data.registrationId+", "+device.platform;
       var fcmToken = data.registrationId;
       var nmTelp = localStorage.getItem('nmTelp');
-      // document.getElementById('fcmToken').innerHTML = fcmToken;
+      document.getElementById('fcmToken').innerHTML = fcmToken;
       // document.write('<div>' + data.registrationId + '</div>');
       $.post(
         'https://klubaners.web.id/sibulan/resi/drivers.php?tes=token',{
