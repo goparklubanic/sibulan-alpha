@@ -139,11 +139,16 @@
         ablReq.update({'status' : 'responded'});
 
         var klien   = localStorage.getItem('kontak');
-        var nama    = localStorage.getItem('namaDriver');
-        var mobil   = localStorage.getItem('jenisMobil');
-        var nopol   = localStorage.getItem('nopolMobil');
+        var nama    = document.getElementById('drvNama').innerHTML;
+        var mobil   = document.getElementById('drvMobil').innerHTML;
+        var nopol   = document.getElementById('drvNopol').innerHTML;
         var nmTelp  = localStorage.getItem('nmTelp');
 
+        console.log('klien:',klien);
+        console.log('nama:',nama);
+        console.log('mobil:',mobil);
+        console.log('nopol:',nopol);
+        console.log('nmTelp:',nmTelp);
 
         var ablRsp = firebase.database().ref(klien);
         ablRsp.update({
@@ -152,7 +157,8 @@
            'driver':nama,
            'mobil':mobil
         });
-        window.location='respon.html';
+
+         window.location='respon.html';
       });
 
     </script>
