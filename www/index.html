@@ -144,21 +144,17 @@
         var nopol   = document.getElementById('drvNopol').innerHTML;
         var nmTelp  = localStorage.getItem('nmTelp');
 
-        console.log('klien:',klien);
-        console.log('nama:',nama);
-        console.log('mobil:',mobil);
-        console.log('nopol:',nopol);
-        console.log('nmTelp:',nmTelp);
 
         var ablRsp = firebase.database().ref(klien);
-        ablRsp.update({
+        ablRsp.set({
            'nopol':nopol,
            'nmTelp':nmTelp,
            'driver':nama,
            'mobil':mobil
         });
 
-         window.location='respon.html';
+         // window.location='respon.html';
+
       });
 
     </script>
