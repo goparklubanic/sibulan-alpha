@@ -146,14 +146,14 @@
 
 
         var ablRsp = firebase.database().ref(klien);
-        ablRsp.set({
+        ablRsp.update({
            'nopol':nopol,
            'nmTelp':nmTelp,
            'driver':nama,
            'mobil':mobil
         });
 
-         // window.location='respon.html';
+         window.location='respon.html';
 
       });
 
