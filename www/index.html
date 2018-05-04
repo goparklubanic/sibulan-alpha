@@ -28,6 +28,7 @@
     <link rel="stylesheet" type="text/css" href="css/google-fonts.css">
     <link rel="stylesheet" type="text/css" href="css/theme.css">
     <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>siBulan Crew</title>
 </head>
 
@@ -57,28 +58,38 @@
       <table class='table'>
         <tbody>
           <tr>
-            <td width='125px'>Ambulans</td>
+            <td width='50px'>
+               <span class="glyphicon glyphicon-envelope"></span>
+            </td>
+            <td id="ticketId"></td>
+          </tr>
+          <tr>
+            <td><span class="fa fa-ambulance" style="font-size:24px"></span></td>
             <td id="ambTipe"></td>
           </tr>
           <tr>
-            <td width='125px'>Nama Pemohon</td>
+            <td><span class="glyphicon glyphicon-wrench"></span></td>
+            <td id="ablScore"></td>
+          </tr>
+          <tr>
+            <td><span class="glyphicon glyphicon-user"></span></td>
             <td id="pemohon"></td>
           </tr>
           <tr>
-            <td>Titik Jemput</td>
+            <td><span class="glyphicon glyphicon-home"></span></td>
             <td id="alamat"></td>
           </tr>
           <tr>
-            <td>Tujuan</td>
+            <td><span class="glyphicon glyphicon-road"></span></td>
             <td id="tujuan"></td>
           </tr>
 
         </tbody>
       </table>
       <div>
-        <button class='form-control' id="responRequest">Respon</button>
+        <button class='form-control btn btn-danger' id="responRequest">Respon</button>
       </div>
-      <div id='app-debug' style='display:block;'>
+      <div id='app-debug' style='display:none;'>
         <div>FCM Status</div>
         <div id="fcmStatus"></div>
         <div>FCM Token</div>
@@ -89,6 +100,7 @@
 
     </div>
   </div>
+  <div class='spacer'>&nbsp;</div>
   <div class='app-footer'>
     &copy;SiBulan 2018
   </div> <!-- app-footer -->
@@ -118,12 +130,20 @@
         console.log(permintaan.val().ablreq);
         var data = permintaan.val().ablreq;
         if(data.status == 'unresponded'){
+          document.getElementById('ticketId').innerHTML=data.ticketId;
           document.getElementById('ambTipe').innerHTML=data.tipe;
-          document.getElementById('pemohon').innerHTML=data.nama+"<br />"+data.nmTelp;
-          document.getElementById('alamat').innerHTML=data.pprt+"/"+data.pprw+" "+data.ppds+" "+data.ppkc+" "+data.ppkt+"<br />"+data.geol;
+          document.getElementById('pemohon').innerHTML=data.nama+" ["+data.nmTelp+"]";
+          document.getElementById('alamat').innerHTML=data.pprt+"/"+data.pprw+" "+data.ppds+" "+data.ppkc+" "+data.ppkt;
           document.getElementById('tujuan').innerHTML=data.tujuan;
           $("#responRequest").css('display','block');
           localStorage.setItem( 'kontak' , data.nmTelp );
+          localStorage.setItem( 'jemput' , data.geol );
+          $.ajax({
+            url     : 'https://klubaners.web.id/sibulan/resi/skore.php?s='+data.score,
+            success : function(skor){
+              $("#ablScore").html(skor);
+            }
+          });
         }else{
           $("#responRequest").hide();
         }
@@ -132,9 +152,10 @@
 
       $("#responRequest").click( function(){
 
+        localStorage.setItem('ticketId',  document.getElementById('ticketId').innerHTML);
         localStorage.setItem('jobPemohon',document.getElementById('pemohon').innerHTML);
-        localStorage.setItem('jobAlamat',document.getElementById('alamat').innerHTML);
-        localStorage.setItem('jobTujuan',document.getElementById('tujuan').innerHTML);
+        localStorage.setItem('jobAlamat', document.getElementById('alamat').innerHTML);
+        localStorage.setItem('jobTujuan', document.getElementById('tujuan').innerHTML);
 
         ablReq.update({'status' : 'responded'});
 
