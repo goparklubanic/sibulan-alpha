@@ -107,6 +107,15 @@
 
 
     $("#jobDone").click( function(){
+      var kontak = localStorage.getItem( 'kontak' );
+      var ablRsp = firebase.database().ref( kontak );
+      ablRsp.update({
+        driver : '',
+        mobil  : '',
+        nopol  : '',
+        nmTelp : ''
+      });
+
       ablReq.update({'status' : 'done'});
       localStorage.setItem('jobPemohon','');
       localStorage.setItem('jobAlamat','');
