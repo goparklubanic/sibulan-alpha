@@ -21,9 +21,14 @@
     img-src * data: 'unsafe-inline';
     connect-src * 'unsafe-inline';
     frame-src *;" />
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!-- bootstrap cdn -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- bootstrap cdn -->
     <script type="text/javascript" src="js/layout.js"></script>
     <link rel="stylesheet" type="text/css" href="css/google-fonts.css">
     <link rel="stylesheet" type="text/css" href="css/theme.css">
@@ -133,7 +138,7 @@
           document.getElementById('ticketId').innerHTML=data.ticketId;
           document.getElementById('ambTipe').innerHTML=data.tipe;
           document.getElementById('pemohon').innerHTML=data.nama+" ["+data.nmTelp+"]";
-          document.getElementById('alamat').innerHTML=data.pprt+"/"+data.pprw+" "+data.ppds+" "+data.ppkc+" "+data.ppkt;
+          document.getElementById('alamat').innerHTML=data.jemput;
           document.getElementById('tujuan').innerHTML=data.tujuan;
           $("#responRequest").css('display','block');
           localStorage.setItem( 'kontak' , data.nmTelp );
