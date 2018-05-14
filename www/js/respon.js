@@ -3,7 +3,7 @@ $(document).ready( function(){
   var jemput      = localStorage.getItem('jobAlamat');
   var tujuan      = localStorage.getItem('jobTujuan');
   var geoloc      = localStorage.getItem('jemput');
-  var jmpLink     = "<a href=# onClick=openmap('"+geoloc+"')>"+jemput+"</a>";
+  var jmpLink     = "<a href=# onClick=openMap('"+geoloc+"')>"+jemput+"</a>";
   $("#pemohon").html(pemohon);
   $("#jemput").html(jmpLink);
   $("#tujuan").html(tujuan);
