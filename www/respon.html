@@ -53,6 +53,10 @@
       <table class='table table-sm'>
         <tbody>
           <tr>
+            <th width='125'>Nomor Tiket</th>
+            <td id='ticketId'></td>
+          </tr>
+          <tr>
             <th width='125'>Pemohon</th>
             <td id='pemohon'></td>
           </tr>
@@ -92,7 +96,7 @@
     var ablReq = firebase.database().ref('ablreq');
 
     ablRef.on('value',function(permintaan){
-      console.log(permintaan.val().ablreq);
+    //  console.log(permintaan.val().ablreq);
       var data = permintaan.val().ablreq;
       if(data.status == 'unresponded'){
         document.getElementById('pemohon').innerHTML=data.nama+"<br />"+data.nmTelp;
@@ -107,6 +111,13 @@
 
 
     $("#jobDone").click( function(){
+      $.post('https://klubaners.web.id/sibulan/resi/drivers.php?tes=reqDone',
+        {
+            tiket : localStorage.getItem('ticketId')
+        }, function( rsps ){
+          console.log(rsps);
+        }
+      );
       var kontak = localStorage.getItem( 'kontak' );
       var ablRsp = firebase.database().ref( kontak );
       ablRsp.update({

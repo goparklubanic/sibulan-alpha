@@ -157,6 +157,16 @@
 
       $("#responRequest").click( function(){
 
+        $.post(
+          'https://klubaners.web.id/sibulan/resi/drivers.php?tes=reqRspd',
+          {
+            tiket : document.getElementById('ticketId').innerHTML,
+            nmhp  : localStorage.getItem('nmTelp')
+          },function( rsps ){
+            console.log(rsps);
+          }
+        );
+
         localStorage.setItem('ticketId',  document.getElementById('ticketId').innerHTML);
         localStorage.setItem('jobPemohon',document.getElementById('pemohon').innerHTML);
         localStorage.setItem('jobAlamat', document.getElementById('alamat').innerHTML);
