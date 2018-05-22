@@ -35,4 +35,4 @@ body.sibulan {
 	text-align: center; font-size: 10pt;
 	background: #800000; color:#EEEEEE;
  }
-.raketok {display:none;}
+.raketok, .hiddenForm {display:none;}
