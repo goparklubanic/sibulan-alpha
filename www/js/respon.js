@@ -8,6 +8,7 @@ $(document).ready( function(){
   $("#pemohon").html(pemohon);
   $("#jemput").html(jmpLink);
   $("#tujuan").html(tujuan);
+  if(pemohon == ''){$('#jobDone').hide();}
 
 
 });

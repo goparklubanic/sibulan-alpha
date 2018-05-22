@@ -118,6 +118,7 @@
           console.log(rsps);
         }
       );
+      localStorage.setItem('ticketId','');
       var kontak = localStorage.getItem( 'kontak' );
       var ablRsp = firebase.database().ref( kontak );
       ablRsp.update({
