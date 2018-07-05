@@ -1,5 +1,5 @@
 $(document).ready( function(){
-  $.getJSON('https://klubaners.web.id/sibulan/resi/drivers.php?tes=jurnalKeg',
+  $.getJSON('https://sibulan.id/resi/drivers.php?tes=jurnalKeg',
     function(jks){
       console.log(jks);
       $("#aksibulan li").remove();
@@ -24,7 +24,7 @@ $(document).ready( function(){
   $("#saveAksi").click( function(){
     var nmLambung = $("#nmLambung").val();
     var aktifitas = $("#berita").val();
-    $.post('https://klubaners.web.id/sibulan/resi/drivers.php?tes=aksikini',{
+    $.post('https://sibulan.id/resi/drivers.php?tes=aksikini',{
       nmlb : nmLambung,
       aksi : aktifitas
     },function(respon){

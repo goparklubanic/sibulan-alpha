@@ -1,4 +1,4 @@
-var remoteSite="https://klubaners.web.id/sibulan/resi/drivers.php";
+var remoteSite="https://sibulan.id/resi/drivers.php";
 //var nmTelp = localStorage.getItem('nmTelp');
 var driver = {
   isLogin: function(){

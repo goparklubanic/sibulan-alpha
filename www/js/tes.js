@@ -1,9 +1,9 @@
-var remoteSite = "https://klubaners.web.id/sibulan/resi/drivers.php";
+var remoteSite = "https://sibulan.id/resi/drivers.php";
 var app = {
     // Application Constructor
     initialize: function() {
         this.bindEvents();
-        
+
     },
     // Bind Event Listeners
     //
